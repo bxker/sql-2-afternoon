@@ -290,11 +290,12 @@ WHERE o.order_id = 1;
 SELECT * FROM orders;
 
     -- Get the total cost of an order ( sum the price of all products on an order ).
-SELECT SUM(o.order_id)
+SELECT o.order_id, SUM(p.price)
 FROM products p
 INNER JOIN orders o
 ON p.product_id = o.product_id
-WHERE o.order_id = 2;
+WHERE o.order_id = 2
+GROUP BY o.order_id;
 
 -- Add a foreign key reference from orders to users.
 -- ALTER TABLE orders
