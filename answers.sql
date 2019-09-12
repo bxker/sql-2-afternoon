@@ -297,14 +297,14 @@ ON p.product_id = o.product_id
 WHERE o.order_id = 2;
 
 -- Add a foreign key reference from orders to users.
-ALTER TABLE orders
-ADD COLUMN user_id INT
-REFERENCES users(user_id);
-
--- Update the orders table to link a user to each order.
+-- ALTER TABLE orders
+-- ADD COLUMN user_id INT
+-- REFERENCES users(user_id);
 ALTER TABLE users
 ADD COLUMN order_id INT
 REFERENCES orders(order_id);
+
+-- Update the orders table to link a user to each order.
 
 UPDATE users
 SET order_id = 1
